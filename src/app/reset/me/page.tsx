@@ -18,7 +18,7 @@ export default async function MyResetPage({ searchParams }: Props) {
   if (!me) {
     return (
       <>
-        <SiteHeader current="reset" />
+        <SiteHeader current="my-reset" />
         <GuestReset day={params.day} saved={params.saved} />
         <HelpBand />
       </>
@@ -28,7 +28,7 @@ export default async function MyResetPage({ searchParams }: Props) {
   const current = r.current;
   return (
     <>
-      <SiteHeader current="reset" />
+      <SiteHeader current="my-reset" />
       <ResetDashboard
         data={r}
         who={`Signed in as ${me.subscriber.email}`}

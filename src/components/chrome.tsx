@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { logout } from '@/app/actions';
 import { getSession } from '@/lib/session';
 
-export async function SiteHeader({ current }: { current?: 'how' | 'plans' | 'reset' }) {
+export async function SiteHeader({ current }: { current?: 'how' | 'plans' | 'reset' | 'my-reset' }) {
   const session = await getSession();
   const signedIn = Boolean(session.userId);
   return (
@@ -26,6 +26,9 @@ export async function SiteHeader({ current }: { current?: 'how' | 'plans' | 'res
           </Link>
           <Link href="/plans" aria-current={current === 'plans' ? 'page' : undefined}>
             My plans
+          </Link>
+          <Link href="/reset/me" aria-current={current === 'my-reset' ? 'page' : undefined}>
+            My reset
           </Link>
           {signedIn ? (
             <form action={logout}>
@@ -69,6 +72,7 @@ export function SiteFooter() {
           <Link href="/how-it-works">How it works</Link>
           <Link href="/reset">Reset your routine</Link>
           <Link href="/plans">My plans</Link>
+          <Link href="/reset/me">My reset</Link>
           <Link href="/#join">Join the list</Link>
         </nav>
       </div>
