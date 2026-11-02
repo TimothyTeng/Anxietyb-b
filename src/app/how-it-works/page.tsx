@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { HelpBand, SiteHeader } from '@/components/chrome';
 import { EVIDENCE, PAIRS } from '@/lib/content';
 
-export const metadata: Metadata = { title: 'How it works' };
+export const metadata: Metadata = { title: 'IF/THEN: how it works' };
 
 const STEPS = [
   { n: '1', color: 'var(--green-text)', title: 'What do you want?', body: <>Name one thing you&apos;d choose if you were calm and thinking clearly.</>, eg: <>&quot;To be asleep by midnight before a test.&quot;</> },

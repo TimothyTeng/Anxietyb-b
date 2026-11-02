@@ -311,6 +311,21 @@ a.cal-cell:hover { border-color: var(--ink); color: var(--ink); }
 .save-band { margin-top: 56px; border-radius: 6px; padding: 32px; display: flex; flex-direction: column; gap: 24px; }
 .save-band .signup { box-sizing: border-box; }
 
+/* All campaigns */
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 24px; align-items: start; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.chips a { border: 1.5px solid var(--ink); color: var(--ink); padding: 10px 16px; border-radius: 99px; text-decoration: none; font-size: 15px; font-weight: 600; }
+.chips a:hover { background: var(--ink); color: var(--cream); }
+.stat-card { flex: 1 1 300px; max-width: 420px; background: var(--pink-soft); border-radius: 6px; padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+.concept { margin: 28px 0 32px; background: var(--mint-soft); border-radius: 6px; padding: 24px 28px; display: flex; flex-direction: column; gap: 10px; }
+.aw-card { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; scroll-margin-top: 16px; }
+.aw-card img { display: block; }
+.aw-points { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.aw-points li { font-size: 14px; font-weight: 600; background: var(--pink-soft); padding: 6px 12px; border-radius: 99px; }
+.aw-tile { display: flex; gap: 14px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 10px; color: var(--ink); text-decoration: none; }
+.aw-tile:hover { border-color: var(--ink); color: var(--ink); }
+.aw-tile img { flex: none; width: 120px; height: 82px; object-fit: cover; border-radius: 4px; }
+
 /* Phones */
 @media (max-width: 640px) {
   .wrap { padding: 0 16px; }
@@ -320,6 +335,8 @@ a.cal-cell:hover { border-color: var(--ink); color: var(--ink); }
   .site-header .wrap { padding-top: 12px; padding-bottom: 12px; }
   .signup, .panel, .streak, .new-plan { padding: 20px; }
   .save-band { padding: 20px; margin-left: -4px; margin-right: -4px; }
+  .concept, .stat-card { padding: 20px; }
+  .aw-tile img { width: 96px; height: 70px; }
   .hero-then { padding-bottom: 56px; }
   .anatomy > div { padding: 24px; }
   .anatomy .d { overflow-wrap: anywhere; }

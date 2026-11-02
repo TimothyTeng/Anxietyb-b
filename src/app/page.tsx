@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { HelpBand, SiteFooter, SiteHeader } from '@/components/chrome';
 import { Poster } from '@/components/Poster';
 import { SignupCard } from '@/components/SignupCard';
-import { POSTERS, ROUTINE_FIELDS } from '@/lib/content';
+import { AwarenessTile, IfThenCard, ResetCard } from '@/components/campaigns';
+import { AWARENESS_GROUPS, POSTERS } from '@/lib/content';
 
 const WAYS = [
   { n: '01 · Email only', color: 'var(--mint)', textColor: 'var(--green-text)', title: 'Join the list', body: 'Periodic positive messages, plan ideas and campaign help, straight to your inbox. No account needed.' },
@@ -16,18 +17,6 @@ const TOUCHPOINTS = [
   { k: 'EXAM SEASON', t: 'Plan Walls', d: 'Sticky-note walls of student plans at campus hubs.' },
   { k: 'ON SOCIAL', t: '#IfThenChallenge', d: 'Seven days, one anxious moment a day.' },
 ];
-
-function Placeholder({ label, kind }: { label: string; kind: string }) {
-  return (
-    <div className="placeholder">
-      <p className="m" style={{ fontSize: 12, color: 'var(--muted)' }}>
-        {label}
-      </p>
-      <p style={{ fontSize: 20, fontWeight: 600 }}>[{kind} idea title]</p>
-      <p style={{ color: 'var(--muted)', fontSize: 15 }}>[One-line description and link to its page]</p>
-    </div>
-  );
-}
 
 export default function Home() {
   return (
@@ -94,24 +83,25 @@ export default function Home() {
 
         <section id="ideas" className="section" aria-labelledby="ideas-title">
           <div className="wrap">
-            <p className="eyebrow">[Campaign name] · All campaigns</p>
+            <p className="eyebrow">Anxiety b&amp;b · All campaigns</p>
             <h2 id="ideas-title" className="h2">
               One campaign, many ways in
             </h2>
             <p className="lede">
-              Our ideas sit in two groups. Awareness ideas help students notice anxiety and how it shapes their choices. Engagement ideas give them something to do about
-              it.
+              Our ideas sit in two groups. Awareness ideas meet youths on the commute, so they notice anxiety and try a quick way to ease it. Engagement ideas give them
+              something to keep doing about it.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(340px, 100%), 1fr))', gap: 40, marginTop: 44, alignItems: 'start' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <div className="cat-head">
                   <h3>Awareness</h3>
                   <span className="m" style={{ fontSize: 13, color: 'var(--muted)' }}>
                     Notice it
                   </span>
                 </div>
-                <Placeholder label="AWARENESS · IDEA 1" kind="Awareness" />
-                <Placeholder label="AWARENESS · IDEA 2" kind="Awareness" />
+                {AWARENESS_GROUPS.flatMap((g) => g.ideas).map((idea) => (
+                  <AwarenessTile key={idea.id} idea={idea} />
+                ))}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div className="cat-head">
@@ -120,63 +110,13 @@ export default function Home() {
                     Act on it
                   </span>
                 </div>
-                <article style={{ borderRadius: 6, overflow: 'hidden', boxShadow: '0 14px 30px -16px rgba(70,50,20,.5)' }}>
-                  <div className="hotbg" style={{ padding: '20px 24px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12 }}>
-                    <p className="d" style={{ fontWeight: 900, fontSize: 64, lineHeight: 0.8 }}>
-                      IF<span style={{ opacity: 0.45 }}>/</span>THEN
-                    </p>
-                    <span className="m" style={{ fontSize: 12, fontWeight: 600, background: 'var(--pink)', padding: '4px 10px', borderRadius: 99 }}>
-                      FEATURED
-                    </span>
-                  </div>
-                  <div className="zig-sm" aria-hidden="true" />
-                  <div className="coolbg" style={{ padding: '14px 24px 24px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    <p style={{ fontSize: 20, fontWeight: 600, lineHeight: 1.3 }}>Decide calm. Act automatic.</p>
-                    <p style={{ fontSize: 15 }}>
-                      Write a short plan that links the moment anxiety usually wins to one small action. Save it, get reminded, and build a streak.
-                    </p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 4 }}>
-                      <Link href="/how-it-works" className="btn btn-orange" style={{ minHeight: 44, fontSize: 15 }}>
-                        How it works
-                      </Link>
-                      <Link href="#join" className="btn btn-outline" style={{ minHeight: 44, fontSize: 15 }}>
-                        Join
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-                <article style={{ borderRadius: 6, overflow: 'hidden', background: 'var(--card)', border: '1px solid var(--rule)', boxShadow: '0 14px 30px -16px rgba(70,50,20,.35)' }}>
-                  <div className="resetbg" style={{ padding: '20px 24px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12 }}>
-                    <p className="d" style={{ fontWeight: 900, fontSize: 64, lineHeight: 0.8 }}>
-                      RESET
-                    </p>
-                    <span className="m" style={{ fontSize: 12, fontWeight: 600, background: 'rgba(255,255,255,.55)', padding: '4px 10px', borderRadius: 99 }}>
-                      2 WEEKS
-                    </span>
-                  </div>
-                  <div aria-hidden="true" style={{ display: 'flex', height: 14 }}>
-                    {ROUTINE_FIELDS.map((f, i) => (
-                      <span key={f.key} style={{ flex: `${[6.5, 8, 1, 2.5, 4][i]} 1 0px`, background: f.color }} />
-                    ))}
-                    <span style={{ flex: '2 1 0px', background: 'var(--sand)' }} />
-                  </div>
-                  <div style={{ padding: '14px 24px 24px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    <p style={{ fontSize: 20, fontWeight: 600, lineHeight: 1.3 }}>Reset your routine.</p>
-                    <p style={{ fontSize: 15, color: 'var(--body)' }}>
-                      Log one week of sleep, study, activity, screen time and rest. Spot what keeps tipping it over, change one thing, and try it for a week.
-                    </p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 4 }}>
-                      <Link href="/reset" className="btn btn-ink" style={{ minHeight: 44, fontSize: 15 }}>
-                        How it works
-                      </Link>
-                      <Link href="/reset/me" className="btn btn-outline" style={{ minHeight: 44, fontSize: 15 }}>
-                        Start my reset
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+                <IfThenCard />
+                <ResetCard />
               </div>
             </div>
+            <Link href="/campaigns" className="btn btn-ink" style={{ marginTop: 32 }}>
+              See all campaigns →
+            </Link>
           </div>
         </section>
 

@@ -139,3 +139,92 @@ export const RESET_NOTES: Record<'log' | 'plan' | 'trial' | 'review', string> = 
   trial: "A day you don't follow it isn't a failure. Write down what got in the way: that's the useful part.",
   review: "If the change didn't stick, it was probably too big. Make it smaller and try again.",
 };
+
+// ── All campaigns: the awareness ideas ──────────────────────────────
+
+export const CAMPAIGN_INTRO =
+  'We build anxiety-relieving habits into the places youths already pass through every day, like the MRT, station stairs and waiting areas, so trying them takes no extra effort. Each idea is something to do, not just something to read: try it once on the way somewhere, and it becomes easier to reach for next time.';
+
+export const ANXIETY_STAT = {
+  fig: '27%',
+  text: 'of youths in Singapore reported severe or extremely severe symptoms of anxiety, the most common youth mental health problem here.',
+  src: 'IMH National Youth Mental Health Study, 2024 [confirm source]',
+};
+
+export type AwarenessIdea = {
+  id: string;
+  n: string;
+  title: string;
+  tagline: string;
+  image: string;
+  alt: string;
+  points: string[];
+  body: string;
+  extra?: string;
+};
+
+export type AwarenessGroup = { id: string; part: string; concept: string; explain: string; ideas: AwarenessIdea[] };
+
+export const AWARENESS_GROUPS: AwarenessGroup[] = [
+  {
+    id: 'experiencing-self',
+    part: 'Awareness · Part 1',
+    concept: 'Remembering self vs experiencing self',
+    explain:
+      'Anxiety often lives in the remembering self: replaying what went wrong and rehearsing what might. These sensory activities pull you into the experiencing self. Folding paper or letting out a scream means actively releasing your emotions and being in the moment.',
+    ideas: [
+      {
+        id: 'fold-for-thought',
+        n: '#1',
+        title: 'Fold for Thought',
+        tagline: 'Fold an origami heart on your commute.',
+        image: '/campaigns/fold-for-thought.webp',
+        alt: 'A "How to fold a heart" handout card with six folding steps, a tear-off pad of paper squares and a QR code, labelled "your daily dose".',
+        points: ['Handouts in public spaces, like MRT handles', 'Easy to do, and quick', 'Fold an origami heart'],
+        body: 'Tear-off handouts sit where youths commute and go about their day. Folding the heart is a short, hands-on break that keeps you grounded in the moment and gives you a pause from anxious thoughts.',
+        extra:
+          'The back of each sheet carries a kind note, like "Hope your day gets better." Keep the heart, or pass it to a friend or a stranger and enjoy spreading a little love. The QR code links to this site.',
+      },
+      {
+        id: 'calm-me-down-pod',
+        n: '#2',
+        title: 'Calm-me-down Pod',
+        tagline: 'A soundproof pod to talk it out, or scream it out.',
+        image: '/campaigns/calm-me-down-pod.webp',
+        alt: 'Illustration of two pods: in one, a girl talks to a friendly AI face on a digital mirror; in the other, a girl screams into a padded wall that says "Scream it out!".',
+        points: ['AI digital mirror chatbot', 'Soundproof scream corner'],
+        body: 'Inside a private pod, a digital mirror with an AI chatbot listens to your rants and validates how you feel, helping you work through your emotions. If it would help, the pod prompts you to let out your frustration with a scream.',
+        extra: 'Screaming can help ease frustration and anxiety. [Add source]',
+      },
+    ],
+  },
+  {
+    id: 'mind-body',
+    part: 'Awareness · Part 2',
+    concept: 'Mind-body connection',
+    explain:
+      'What you do with your body can change how your mind feels. Mindful Screening brings in breathing exercises and Wellness Steps brings in everyday movement, both in familiar public spaces, so these habits are easy to practise again and again and help with managing anxiety.',
+    ideas: [
+      {
+        id: 'mindful-screening',
+        n: '#3',
+        title: 'Mindful Screening',
+        tagline: 'Breathing exercises instead of ads on the MRT.',
+        image: '/campaigns/mindful-screening.webp',
+        alt: 'An MRT train interior with the digital screen above the door showing a breathing animation that says "Breathe out".',
+        points: ['Easy-to-follow exercises', 'Convenient and discreet', 'Builds independent habits'],
+        body: 'Digital ad screens on public transport play short animated breathing exercises, like box breathing and 4-7-8 breathing. Riders can follow along to relax for a moment and ease their anxiety, right in their seat.',
+      },
+      {
+        id: 'wellness-steps',
+        n: '#4',
+        title: 'Wellness Steps',
+        tagline: 'Footprints and prompts that turn stairs into a small win.',
+        image: '/campaigns/wellness-steps.webp',
+        alt: 'A station staircase between two escalators, each step printed with prompts like "Keep going!" and "10 steps = 1 metre higher", with footprint stickers on the floor leading to it.',
+        points: ['Encourages stair use', 'Fits into existing routines', 'Builds lasting active habits'],
+        body: 'Footprint stickers along walkways lead to the stairs, with a QR code to this site. Motivational prompts on the steps encourage youths to take the stairs, turning a routine journey into a bit of physical activity.',
+      },
+    ],
+  },
+];

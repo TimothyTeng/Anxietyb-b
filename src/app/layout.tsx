@@ -7,8 +7,8 @@ const body = IBM_Plex_Sans({ subsets: ['latin'], weight: ['400', '500', '600'], 
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-mono' });
 
 export const metadata: Metadata = {
-  title: { default: 'IF / THEN', template: '%s · IF / THEN' },
-  description: 'Make the choice before anxiety makes it for you. Write a small if/then plan while you are calm, get reminded, build a streak.',
+  title: { default: 'Anxiety b&b', template: '%s · Anxiety b&b' },
+  description: 'Small, everyday ways for youths to notice anxiety and do something about it: if/then plans, a two-week routine reset, and calm moments on the commute.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
